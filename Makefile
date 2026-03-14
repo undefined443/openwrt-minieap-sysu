@@ -9,7 +9,7 @@ PKG_LICENSE_FILES:=LICENSE
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/minieap-$(PKG_VERSION)
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_URL:=https://github.com/Undefined443/minieap-sysu.git
+PKG_SOURCE_URL:=https://github.com/undefined443/minieap-sysu.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
 
@@ -19,8 +19,8 @@ define Package/$(PKG_NAME)
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Extensible 802.1x client with Ruijie v3 (v4) plugin
-	MAINTAINER:=Undefined443
-	URL:=https://github.com/Undefined443/minieap-sysu
+	MAINTAINER:=undefined443
+	URL:=https://github.com/undefined443/minieap-sysu
 endef
 
 define Package/$(PKG_NAME)/description
