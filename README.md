@@ -1,6 +1,6 @@
 # minieap for OpenWrt
 
-minieap 的中山大学适配版，已在东校园至善园稳定运行一学年。
+minieap 的中山大学适配版，已在东校园至善园稳定运行 2 学年。
 
 ## Build
 
@@ -19,12 +19,12 @@ minieap 的中山大学适配版，已在东校园至善园稳定运行一学年
      texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
    ```
 
-2. 下载对应路由器型号的 SDK：
+2. 根据你的路由器型号下载对应的 SDK：
 
    - [OpenWrt Firmware Selector](https://firmware-selector.openwrt.org/)
    - [ImmortalWrt Firmware Selector](https://firmware-selector.immortalwrt.org/)
 
-   点击搜索结果下的文件夹图标，然后搜索 `sdk`，得到我们需要的 SDK 包，右键复制文件地址。
+   点击搜索结果下的文件夹图标，然后搜索 `sdk` 找到 SDK 包下载链接，右键复制链接 URL，然后使用如下命令下载并解压 SDK 包。
 
    ```sh
    wget https://downloads.immortalwrt.org/releases/24.10-SNAPSHOT/targets/mediatek/filogic/immortalwrt-sdk-24.10-SNAPSHOT-mediatek-filogic_gcc-13.3.0_musl.Linux-x86_64.tar.zst
@@ -32,30 +32,32 @@ minieap 的中山大学适配版，已在东校园至善园稳定运行一学年
    cd immortalwrt-sdk-*
    ```
 
-3. 编译：
+3. 编译 minieap：
 
    ```sh
-   git clone https://github.com/Undefined443/openwrt-minieap-sysu package/minieap
-   make menuconfig # choose `minieap` in section `Network`
+   git clone https://github.com/undefined443/openwrt-minieap-sysu package/minieap
+   make menuconfig  # choose `minieap` in section `Network`
    make package/minieap/compile V=s
    ```
 
-   查找编译产物位置：
+   获取编译产物路径：
 
    ```sh
    find . -name "minieap*.ipk"
    ```
 
-4. 将编译得到的软件包上传到路由器，并安装：
+## Install
+
+1. 将编译产物上传到路由器后，安装：
 
    ```sh
    opkg install minieap*.ipk
    ```
 
-5. 启动：
+2. 启动：
 
    ```sh
    minieap -u <username> -p <password> -n wan -w
    ```
 
-参见：[使用 minieap 实现路由器锐捷认证上网 | 博客园](https://www.cnblogs.com/Undefined443/p/18375072)
+参见：[使用 minieap 实现路由器锐捷认证上网 | 博客园](https://www.cnblogs.com/undefined443/p/18375072)
