@@ -1,6 +1,6 @@
-# minieap for OpenWrt
+# MiniEAP for OpenWrt
 
-minieap 的中山大学适配版，已在东校园至善园稳定运行 2 学年。
+MiniEAP 的中山大学适配版，已在东校园至善园稳定运行 2 学年。
 
 ## Build
 
