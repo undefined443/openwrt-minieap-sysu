@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=minieap
-PKG_VERSION:=0.93.1
+PKG_VERSION:=0.94.0
 #PKG_RELEASE:=1
 PKG_MAINTAINER:=Xiao Li <xiaoli3397@gmail.com>
 PKG_LICENSE:=GPLv3
