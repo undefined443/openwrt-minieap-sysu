@@ -19,7 +19,7 @@ define Package/$(PKG_NAME)
 	SECTION:=net
 	CATEGORY:=Network
 	TITLE:=Extensible 802.1x client with Ruijie v3 (v4) plugin
-	MAINTAINER:=undefined443
+	MAINTAINER:=Xiao Li <xiaoli3397@gmail.com>
 	URL:=https://github.com/undefined443/minieap-sysu
 endef
 

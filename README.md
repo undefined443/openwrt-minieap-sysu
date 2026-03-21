@@ -23,11 +23,13 @@ MiniEAP 的中山大学适配版，已在东校园至善园稳定运行 2 学年
 3. 使用镜像构建 minieap 安装包：
 
    ```sh
+   export https_proxy="http://192.168.1.2:7890"  # 改为实际代理地址
+
    git clone https://github.com/undefined443/openwrt-minieap-sysu minieap && \
    docker run -u 0:0 --rm \
        -v ./minieap:/home/build/immortalwrt/package/minieap \
        -v ./output:/home/build/immortalwrt/bin \
-       --network=host \
+       -e https_proxy=$https_proxy \
        immortalwrt/sdk:mediatek-filogic-23.05-SNAPSHOT \
        bash -c "make defconfig && make package/minieap/compile V=s" && \
    mv $(find output/packages -name "minieap*") minieap.ipk && \
