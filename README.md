@@ -5,7 +5,7 @@ MiniEAP 的中山大学适配版，已在东校园至善园稳定运行 2 学年
 ## Prerequisites
 
 1. 任意 Linux 发行版
-2. docker
+2. Docker
 
 ## Build
 
@@ -13,19 +13,19 @@ MiniEAP 的中山大学适配版，已在东校园至善园稳定运行 2 学年
 
    > 以 Redmi AX6000 为例，根据硬件信息中的 Target 和 S.Target 确定其 CPU 平台为 `mediatek/filogic`
 
-2. 找到适配路由器 OpenWrt/ImmortalWrt 发行版的 SDK 镜像：
+2. 找到路由器在运行的 OpenWrt/ImmortalWrt 发行版的 SDK 镜像：
 
    - [openwrt/sdk](https://hub.docker.com/r/openwrt/sdk/tags)
    - [immortalwrt/sdk](https://hub.docker.com/r/immortalwrt/sdk/tags)
 
-   > 以 Redmi AX6000 为例，目前运行 ImmortalWrt:23.05-SNAPSHOT 系统，因此选择 `immortalwrt/sdk:mediatek-filogic-23.05-SNAPSHOT` 镜像
+   > 以 Redmi AX6000 为例，目前运行 ImmortalWrt:23.05-SNAPSHOT 系统，因此选择 `immortalwrt/sdk:mediatek-filogic-23.05-SNAPSHOT` SDK 镜像
 
-3. 使用镜像构建 minieap 安装包：
+3. 使用 SDK 镜像构建 minieap 安装包：
 
    ```sh
    export https_proxy="http://192.168.1.2:7890"  # 改为实际代理地址
 
-   git clone https://github.com/undefined443/openwrt-minieap-sysu minieap && \
+   git clone https://github.com/undefined443/openwrt-minieap-sysu openwrt-minieap && \
    docker run -u 0:0 --rm \
        -v ./minieap:/home/build/immortalwrt/package/minieap \
        -v ./output:/home/build/immortalwrt/bin \
@@ -42,18 +42,18 @@ MiniEAP 的中山大学适配版，已在东校园至善园稳定运行 2 学年
 
    ```sh
    scp minieap.ipk root@immortalwrt.lan:
-   ssh root@immortalwrt.lan
    ```
 
-2. 安装：
+2. 安装 minieap：
 
    ```sh
-   opkg install minieap.ipk
+   ssh root@immortalwrt.lan  # 登录路由器
+   opkg install minieap.ipk  # 安装
    ```
 
 ## Usage
 
-1. 启动：
+1. 启动 minieap：
 
    ```sh
    minieap -u <username> -p <password> -w                # 东校区至善园
@@ -62,7 +62,7 @@ MiniEAP 的中山大学适配版，已在东校园至善园稳定运行 2 学年
 
    - `-w`：保存配置到文件（`/etc/minieap.conf`）
 
-2. 允许开机自启：
+2. 允许 minieap 开机自启：
 
    ```sh
    /etc/init.d/minieap enable  # 允许开机自启
